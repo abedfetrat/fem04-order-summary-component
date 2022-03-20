@@ -1,0 +1,13 @@
+@mixin bp-up($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin on-event {
+  &:hover, 
+  &:focus, 
+  &:active {
+    @content;
+  }
+}

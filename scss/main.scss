@@ -1,0 +1,110 @@
+@use './base';
+@use './utillities';
+@use './mixins' as *;
+@use './typography' as *;
+@use './colors';
+@use './buttons' as *;
+
+$bp: 450px;
+
+body {
+  display: grid;
+  place-items: center;
+  background-color: colors.$pale-blue;
+  background-image: url(../images/pattern-background-mobile.svg);
+  background-position: top;
+  background-size: contain;
+  background-repeat: repeat-x;
+  @include bp-up($bp) {
+    background-image: url(../images/pattern-background-desktop.svg);
+  }
+}
+
+/* Order Summary */
+
+.order-summary {
+  width: min(100% - 3rem, 450px);
+  overflow: hidden;
+  border-radius: 20px;
+  text-align: center;
+  background-color: colors.$white;
+  &__img {
+    height: 160px;
+    object-fit: cover;
+    @include bp-up($bp) {
+      height: 220px;
+    }
+  }
+  &__content {
+    padding: 40px 24px;
+    @include bp-up($bp) {
+      padding: 45px 48px;
+    }
+  }
+  &__title {
+    font-size: $fs-700;
+    font-weight: $fw-black;
+    line-height: 1;
+    color: colors.$dark-blue;
+    @include bp-up($bp) {
+     font-size: $fs-800;
+    }
+  }
+  &__text {
+    line-height: 1.8;
+    color: colors.$desaturated-blue;
+    @include bp-up($bp) {
+     font-size: $fs-500;
+    }
+  }
+  &__plan {
+    padding: 16px;
+    border-radius: 10px;
+    font-size: $fs-300;
+    text-align: start;
+    background-color: colors.$very-pale-blue;;
+    &::before {
+      content: "";
+      width: 48px;
+      height: 48px;
+      background-image: url(../images/icon-music.svg);
+      background-position: center;
+      background-size: cover;
+    }
+    @include bp-up($bp) {
+     font-size: $fs-500;
+    }
+  }
+  &__plan-name {
+    font-weight: $fw-black;
+    color: colors.$dark-blue;
+  }
+  &__plan-pricing {
+    color: colors.$desaturated-blue;
+  }
+  &__change-plan-btn {
+    margin-left: auto;
+    font-size: $fs-200;
+    text-decoration-skip-ink: auto;
+    text-decoration: underline;
+    color: colors.$bright-blue;
+    @include on-event {
+      text-decoration: none;
+      color: lighten(colors.$bright-blue, 15);
+    }
+    @include bp-up($bp) {
+     font-size: $fs-300;
+    }
+  }
+  &__checkout-btn {
+    box-shadow: 0px 20px 20px rgba(56, 42, 225, 0.190291);
+    @include bp-up($bp) {
+     margin-top: 2rem;
+    }
+  }
+  &__cancel-order-btn {
+    @include bp-up($bp) {
+      margin-top: 2rem;
+    }
+  }
+}

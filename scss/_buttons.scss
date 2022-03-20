@@ -1,0 +1,33 @@
+@use './colors';
+
+.btn {
+    display: inline-block;
+    padding: 1.125em;
+    border: none;
+    border-radius: 10px;
+    font-size: inherit;
+    font-weight: 700;
+    color: colors.$white;
+    background-color: colors.$bright-blue;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+    @include on-event {
+        background-color: lighten(colors.$bright-blue, 15);
+    }
+}
+
+.btn--flat {
+    padding: 0;
+    background: none;
+    color: colors.$desaturated-blue;
+    transition: color 200ms ease;
+   @include on-event {
+        background: inherit;
+        color: colors.$dark-blue;
+    }
+}
+
+.btn--block {
+    display: block;
+    width: 100%;
+}
